@@ -1,4 +1,4 @@
-package biblioteca.modelo;
+package Biblioteca.modelo;
 
 public class Libro {
     private String titulo;
@@ -35,4 +35,3 @@ public class Libro {
         return titulo + " - " + autor;
     }
 }
-
