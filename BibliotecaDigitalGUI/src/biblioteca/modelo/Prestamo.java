@@ -1,4 +1,4 @@
-package Biblioteca.modelo;
+package biblioteca.modelo;
 
 import java.time.LocalDate;
 

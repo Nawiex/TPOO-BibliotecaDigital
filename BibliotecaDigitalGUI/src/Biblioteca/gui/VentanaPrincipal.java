@@ -1,15 +1,15 @@
-package Biblioteca.gui;
+package biblioteca.gui;
 
 import javax.swing.*;
-import Biblioteca.servicio.Biblioteca;
-import Biblioteca.modelo.*;
+import biblioteca.servicio.Biblioteca;
+import biblioteca.modelo.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.List;
 
 public class VentanaPrincipal extends JFrame {
 
-    private Biblioteca  = new Biblioteca();
+    private Biblioteca biblioteca = new Biblioteca();
 
     public VentanaPrincipal() {
         setTitle("📚 Biblioteca Digital");
@@ -36,14 +36,14 @@ public class VentanaPrincipal extends JFrame {
         JButton btnVer = new JButton("Ver Disponibles");
 
         btnAgregar.addActionListener(e -> {
-            Biblioteca.registrarLibro(txtTitulo.getText(), txtAutor.getText());
+            biblioteca.registrarLibro(txtTitulo.getText(), txtAutor.getText());
             JOptionPane.showMessageDialog(this, "Libro agregado.");
             txtTitulo.setText("");
             txtAutor.setText("");
         });
 
         btnVer.addActionListener(e -> {
-            List<Libro> libros = Biblioteca.obtenerLibrosDisponibles();
+            List<Libro> libros = biblioteca.obtenerLibrosDisponibles();
             if (libros.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "No hay libros disponibles.");
                 return;
@@ -72,7 +72,7 @@ public class VentanaPrincipal extends JFrame {
         JButton btnRegistrar = new JButton("Registrar Usuario");
 
         btnRegistrar.addActionListener(e -> {
-            Biblioteca.registrarUsuario(txtDni.getText(), txtNombre.getText());
+            biblioteca.registrarUsuario(txtDni.getText(), txtNombre.getText());
             JOptionPane.showMessageDialog(this, "Usuario registrado.");
             txtDni.setText("");
             txtNombre.setText("");
@@ -101,7 +101,7 @@ public class VentanaPrincipal extends JFrame {
             try {
                 String libro = (String) comboLibrosPrestar.getSelectedItem();
                 String usuario = (String) comboUsuarios.getSelectedItem();
-                Biblioteca.prestarLibro(libro, usuario);
+                biblioteca.prestarLibro(libro, usuario);
                 JOptionPane.showMessageDialog(this, "✅ Libro prestado.");
                 actualizarCombos(comboLibrosPrestar, comboUsuarios, comboLibrosDevolver);
             } catch (Exception ex) {
@@ -112,7 +112,7 @@ public class VentanaPrincipal extends JFrame {
         // Acción: Devolver libro
         btnDevolver.addActionListener(e -> {
             String libro = (String) comboLibrosDevolver.getSelectedItem();
-            Biblioteca.devolverLibro(libro);
+            biblioteca.devolverLibro(libro);
             JOptionPane.showMessageDialog(this, "📚 Libro devuelto.");
             actualizarCombos(comboLibrosPrestar, comboUsuarios, comboLibrosDevolver);
         });
@@ -143,15 +143,15 @@ public class VentanaPrincipal extends JFrame {
         comboUsuarios.removeAllItems();
         comboLibrosDevolver.removeAllItems();
 
-        for (Libro l : Biblioteca.obtenerLibrosDisponibles()) {
+        for (Libro l : biblioteca.obtenerLibrosDisponibles()) {
             comboLibrosPrestar.addItem(l.getTitulo());
         }
 
-        for (Prestamo p : Biblioteca.obtenerPrestamos()) {
+        for (Prestamo p : biblioteca.obtenerPrestamos()) {
             comboLibrosDevolver.addItem(p.getLibro().getTitulo());
         }
 
-        for (Usuario u : Biblioteca.obtenerUsuarios()) {
+        for (Usuario u : biblioteca.obtenerUsuarios()) {
             comboUsuarios.addItem(u.getDni());
         }
     }
@@ -161,7 +161,7 @@ public class VentanaPrincipal extends JFrame {
         JButton btnVerReporte = new JButton("Ver Detalles de Préstamos");
 
         btnVerReporte.addActionListener(e -> {
-            List<Prestamo> prestamos = Biblioteca.obtenerPrestamos();
+            List<Prestamo> prestamos = biblioteca.obtenerPrestamos();
             if (prestamos.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "No hay préstamos registrados.");
                 return;
@@ -190,3 +190,11 @@ public class VentanaPrincipal extends JFrame {
         new VentanaPrincipal();
     }
 }
+
+
+
+
+
+
+
+
