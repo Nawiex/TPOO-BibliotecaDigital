@@ -78,7 +78,8 @@ public class Biblioteca {
         return null;
     }
 
-// Obtener todos los préstamos
+    // Obtener todos los préstamos
 public ArrayList<Prestamo> obtenerPrestamos() {
         return prestamos;
+}
 }
