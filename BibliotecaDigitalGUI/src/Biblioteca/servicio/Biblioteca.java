@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class Biblioteca {
 
-    // Comentarios
+    // Agregando Listas
     private ArrayList<Libro> librosDisponibles = new ArrayList<>();
     private HashMap<String, Usuario> usuarios = new HashMap<>();
     private ArrayList<Prestamo> prestamos = new ArrayList<>();
@@ -79,7 +79,7 @@ public class Biblioteca {
     }
 
     // Obtener todos los préstamos
-    public ArrayList<Prestamo> obtenerPrestamos() {
+public ArrayList<Prestamo> obtenerPrestamos() {
         return prestamos;
-    }
+}
 }
